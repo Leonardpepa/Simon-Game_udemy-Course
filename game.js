@@ -25,7 +25,7 @@ $(".btn").click(function () {
   checkAnswer(userClickedPattern.length - 1);
 });
 
-$("body").click(() => {
+$("body").on("click tap touchstart", () => {
   if (!started) {
     $("#level-title").text("Level " + level);
     nextSequence();
