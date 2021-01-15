@@ -8,12 +8,16 @@ var started = false;
 var level = 0;
 
 $(document).keypress(function () {
+  startGame();
+});
+
+function startGame() {
   if (!started) {
     $("#level-title").text("Level " + level);
     nextSequence();
     started = true;
   }
-});
+}
 
 $(".btn").click(function () {
   var userChosenColour = $(this).attr("id");
@@ -25,12 +29,11 @@ $(".btn").click(function () {
   checkAnswer(userClickedPattern.length - 1);
 });
 
-$("body").on("click tap touchstart", () => {
-  if (!started) {
-    $("#level-title").text("Level " + level);
-    nextSequence();
-    started = true;
+$(document).on("click tap ", (e) => {
+  if ($(e.target).hasClass("btn")) {
+    return false;
   }
+  startGame();
 });
 
 function nextSequence() {
