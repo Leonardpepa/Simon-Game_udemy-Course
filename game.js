@@ -7,6 +7,13 @@ var started = false;
 
 var level = 0;
 
+var audioy = true;
+$(".audio").click((e) => {
+  $(e.target).toggleClass("fa-volume-up");
+  $(e.target).toggleClass("fa-volume-off");
+  audioy = !audioy;
+});
+
 $(document).keypress(function () {
   startGame();
 });
@@ -30,7 +37,7 @@ $(".btn").click(function () {
 });
 
 $(document).on("click tap ", (e) => {
-  if ($(e.target).hasClass("btn")) {
+  if ($(e.target).hasClass("btn") || $(e.target).hasClass("audio")) {
     return false;
   }
   startGame();
@@ -54,8 +61,10 @@ function nextSequence() {
 }
 
 function playSound(name) {
-  var audio = new Audio("sounds/" + name + ".mp3");
-  audio.play();
+  if (audioy) {
+    var audio = new Audio("sounds/" + name + ".mp3");
+    audio.play();
+  }
 }
 
 function animatePress(currentColor) {

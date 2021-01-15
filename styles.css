@@ -50,3 +50,14 @@ body {
   box-shadow: 0 0 20px white;
   background-color: grey;
 }
+
+.audio {
+  color: white;
+  position: absolute;
+  top: 20%;
+  left: 5%;
+}
+
+.audio:hover {
+  cursor: pointer;
+}
