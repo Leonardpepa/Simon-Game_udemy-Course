@@ -25,6 +25,14 @@ $(".btn").click(function () {
   checkAnswer(userClickedPattern.length - 1);
 });
 
+$("body").click(() => {
+  if (!started) {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+  }
+});
+
 function nextSequence() {
   userClickedPattern = [];
   level++;
